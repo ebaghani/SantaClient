@@ -1,0 +1,23 @@
+<!-- <h1>
+  Please enter your username and password below
+</h1> -->
+<form>
+  <div class="imgcontainer">
+    <img src="../../assets/images/christmas-santa.jpg" alt="Santa Image" class="avatar">
+  </div>
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" [(ngModel)]="loginToAuthenticate.username" name="username" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password"  [(ngModel)]="loginToAuthenticate.password" name="password" required>
+
+    <button (click)="onSubmitLoginClicked(loginToAuthenticate)" type="submit">Login</button>
+  </div>
+
+  <!-- <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div> -->
+</form>

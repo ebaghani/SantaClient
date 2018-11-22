@@ -1,0 +1,58 @@
+<br />
+<br />
+<h1>Action buttons are added as the last column to each table. (Scroll to the right to check them)</h1>
+<!-- <h2>Use the table below in order to add a new child to the list. Once you are finished entering the data, there is an "Add Child" button as the last column of this table, which you should click, in order for the child information to be added to the "Children List" table displayed below this table. Use the "Children List" table as a guide for the format of the data that need be entered in the table below. Try adding all required data and using non-duplicate values for ids and emails from the ones already in the "Children List" table.</h2> -->
+<br />
+<h3 id="title">Add New Child Table</h3>
+<table border="1" class="tbl">
+  <tr>
+    <th>Id</th><th>Email</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th><th>Street</th><th>City</th><th>Province</th><th>Postal Code</th><th>Country</th><th>latitude</th><th>Longitude</th><th>Is Naughty</th><th>Date Created</th><th>Password</th><th>Action</th>
+  </tr>
+  <tr>
+    <td><input type="text"  [(ngModel)]="childToAdd.id" /></td>
+    <td><input type="text"  [(ngModel)]="childToAdd.email" /></td>
+    <td><input type="text"  [(ngModel)]="childToAdd.firstName"/></td>
+    <td><input type="text"  [(ngModel)]="childToAdd.lastName"/></td>
+    <td><input type="date"  [(ngModel)]="childToAdd.dateOfBirth"/></td>
+    <td><input type="text"  [(ngModel)]="childToAdd.street"/></td>
+    <td><input type="text"  [(ngModel)]="childToAdd.city"/></td>
+    <td><input type="text"  [(ngModel)]="childToAdd.province"/></td>
+    <td><input type="text"  [(ngModel)]="childToAdd.postalCode"/></td>
+    <td><input type="text"  [(ngModel)]="childToAdd.country"/></td>
+    <td><input type="text"  [(ngModel)]="childToAdd.latitude"/></td>
+    <td><input type="text"  [(ngModel)]="childToAdd.longitude"/></td>
+    <td><input type="text"  [(ngModel)]="childToAdd.isNaughty"/></td>
+    <td><input type="date"  [(ngModel)]="childToAdd.dateCreated"/></td>
+    <td><input type="text"  [(ngModel)]="childToAdd.password"/></td>
+    <td><button (click)="onAddClicked(childToAdd)">Add Child</button></td>
+    <!-- <td>{{s.startDate | date:'fullDate'}}</td>  -->
+  </tr>
+</table>
+<br />
+<br />
+<h3 id="title">Children List Table</h3>
+<!-- <h2>Scroll right to the last column of this table to see buttons for deleting and saving changes</h2> -->
+<table border="1" class="tbl">
+    <tr>
+      <th>Id</th><th>Email</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th><th>Street</th><th>City</th><th>Province</th><th>Postal Code</th><th>Country</th><th>latitude</th><th>Longitude</th><th>Is Naughty</th><th>Date Created</th><th>Action</th>
+    </tr>
+    <tr *ngFor="let c of childArray">
+        <td><input type="text"  [(ngModel)]="c.id" /></td>
+        <td><input type="text"  [(ngModel)]="c.email" /></td>
+        <td><input type="text"  [(ngModel)]="c.firstName"/></td>
+        <td><input type="text"  [(ngModel)]="c.lastName"/></td>
+        <td>{{c.dateOfBirth | date:'yyyy-MM-dd'}}<input type="date"  [(ngModel)]="c.dateOfBirth"/></td>
+        <td><input type="text"  [(ngModel)]="c.street"/></td>
+        <td><input type="text"  [(ngModel)]="c.city"/></td>
+        <td><input type="text"  [(ngModel)]="c.province"/></td>
+        <td><input type="text"  [(ngModel)]="c.postalCode"/></td>
+        <td><input type="text"  [(ngModel)]="c.country"/></td>
+        <td><input type="text"  [(ngModel)]="c.latitude"/></td>
+        <td><input type="text"  [(ngModel)]="c.longitude"/></td>
+        <td><input type="text"  [(ngModel)]="c.isNaughty"/></td>
+        <td>{{c.dateCreated | date:'yyyy-MM-dd'}}<input type="date"  [(ngModel)]="c.dateCreated"/></td>
+        <!-- <td><input type="text"  [(ngModel)]="c.password"/></td> -->
+        <td><button [disabled]="isSanta(c.id, c)" (click)="onDeleteClicked(c.id)">Delete</button> <button [disabled]="isSanta(c.id, c)"  (click)="onSaveChangesClicked(c.id, c)">Save Changes</button></td>
+    </tr>
+</table>
+
