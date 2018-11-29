@@ -35,9 +35,16 @@ export class LoginComponent implements OnInit {
         }
       },
       r => {
-        alert(r.error.error);
+        alert("Invalid Username and Password! Please try logging in again.");
       }
     );
+  }
+
+  isValidLoginCredentials(id, child): boolean {
+    if ( child.email == "santa@np.com"){
+      return true;
+    }
+    return false;
   }
 
 }
