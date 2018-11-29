@@ -11,11 +11,12 @@ export class ChildComponent implements OnInit {
   public childArray:Child[] = [];
   public child:Child;
   public childToAdd:Child = new Child();
-  public dateNewChildCreated = new Date();
+  // public dateNewChildCreated = new Date();
 
   constructor(private _childService: ChildService) { }
   
   ngOnInit() {
+    this.childToAdd.dateCreated = new Date();
     //this.getChildsPromise(); 
     this.getChildsObservable();
     //this.getChild(42);
@@ -47,6 +48,7 @@ export class ChildComponent implements OnInit {
     .subscribe(
       data => { this.child= data; 
                 this.childToAdd = new Child();
+                this.childToAdd.dateCreated = new Date();
                 this.getChildsObservable();
               },
       error => console.log(error)
@@ -74,8 +76,8 @@ export class ChildComponent implements OnInit {
     //alert("Are you sure you want to delete this child?" + id);
   }
 
-  isSanta(id, child): boolean {
-    if ( child.email == "santa@np.com"){
+  isSantaOrTim(id, child): boolean {
+    if ( child.email == "santa@np.com" || child.email == "tim@np.com"){
       return true;
     }
     return false;

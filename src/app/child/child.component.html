@@ -22,7 +22,7 @@
     <td><input type="text"  [(ngModel)]="childToAdd.latitude"/></td>
     <td><input type="text"  [(ngModel)]="childToAdd.longitude"/></td>
     <td><input type="text"  [(ngModel)]="childToAdd.isNaughty"/></td>
-    <td><input type="date"  [(ngModel)]="childToAdd.dateCreated"/></td>
+    <td> {{ childToAdd.dateCreated | date:'yyyy-MM-dd' }} <input type="date"  [disabled]=true/></td>
     <td><input type="text"  [(ngModel)]="childToAdd.password"/></td>
     <td><button (click)="onAddClicked(childToAdd)">Add Child</button></td>
     <!-- <td>{{s.startDate | date:'fullDate'}}</td>  -->
@@ -37,22 +37,22 @@
       <th>Id</th><th>Email</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th><th>Street</th><th>City</th><th>Province</th><th>Postal Code</th><th>Country</th><th>latitude</th><th>Longitude</th><th>Is Naughty</th><th>Date Created</th><th>Action</th>
     </tr>
     <tr *ngFor="let c of childArray">
-        <td><input type="text"  [(ngModel)]="c.id" /></td>
-        <td><input type="text"  [(ngModel)]="c.email" /></td>
-        <td><input type="text"  [(ngModel)]="c.firstName"/></td>
-        <td><input type="text"  [(ngModel)]="c.lastName"/></td>
-        <td>{{c.dateOfBirth | date:'yyyy-MM-dd'}}<input type="date"  [(ngModel)]="c.dateOfBirth"/></td>
-        <td><input type="text"  [(ngModel)]="c.street"/></td>
-        <td><input type="text"  [(ngModel)]="c.city"/></td>
-        <td><input type="text"  [(ngModel)]="c.province"/></td>
-        <td><input type="text"  [(ngModel)]="c.postalCode"/></td>
-        <td><input type="text"  [(ngModel)]="c.country"/></td>
-        <td><input type="text"  [(ngModel)]="c.latitude"/></td>
-        <td><input type="text"  [(ngModel)]="c.longitude"/></td>
-        <td><input type="text"  [(ngModel)]="c.isNaughty"/></td>
-        <td>{{c.dateCreated | date:'yyyy-MM-dd'}}<input type="date"  [(ngModel)]="c.dateCreated"/></td>
+        <td><input type="text"   [disabled]="isSantaOrTim(c.id, c)"  [(ngModel)]="c.id" /></td>
+        <td><input type="text"   [disabled]="isSantaOrTim(c.id, c)"  [(ngModel)]="c.email" /></td>
+        <td><input type="text"   [disabled]="isSantaOrTim(c.id, c)"  [(ngModel)]="c.firstName"/></td>
+        <td><input type="text"   [disabled]="isSantaOrTim(c.id, c)" [(ngModel)]="c.lastName"/></td>
+        <td>{{c.dateOfBirth | date:'yyyy-MM-dd'}}<input type="date"   [disabled]="isSantaOrTim(c.id, c)"  [(ngModel)]="c.dateOfBirth"/></td>
+        <td><input type="text"   [disabled]="isSantaOrTim(c.id, c)" [(ngModel)]="c.street"/></td>
+        <td><input type="text"   [disabled]="isSantaOrTim(c.id, c)" [(ngModel)]="c.city"/></td>
+        <td><input type="text"   [disabled]="isSantaOrTim(c.id, c)" [(ngModel)]="c.province"/></td>
+        <td><input type="text"   [disabled]="isSantaOrTim(c.id, c)" [(ngModel)]="c.postalCode"/></td>
+        <td><input type="text"   [disabled]="isSantaOrTim(c.id, c)" [(ngModel)]="c.country"/></td>
+        <td><input type="text"   [disabled]="isSantaOrTim(c.id, c)" [(ngModel)]="c.latitude"/></td>
+        <td><input type="text"   [disabled]="isSantaOrTim(c.id, c)" [(ngModel)]="c.longitude"/></td>
+        <td><input type="text"   [disabled]="isSantaOrTim(c.id, c)" [(ngModel)]="c.isNaughty"/></td>
+        <td>{{c.dateCreated | date:'yyyy-MM-dd'}}<input type="date"  [disabled]=true  [(ngModel)]="c.dateCreated"/></td>
         <!-- <td><input type="text"  [(ngModel)]="c.password"/></td> -->
-        <td><button [disabled]="isSanta(c.id, c)" (click)="onDeleteClicked(c.id)">Delete</button> <button [disabled]="isSanta(c.id, c)"  (click)="onSaveChangesClicked(c.id, c)">Save Changes</button></td>
+        <td><button [disabled]="isSantaOrTim(c.id, c)" (click)="onDeleteClicked(c.id)">Delete</button> <button [disabled]="isSantaOrTim(c.id, c)"  (click)="onSaveChangesClicked(c.id, c)">Save Changes</button></td>
     </tr>
 </table>
 
