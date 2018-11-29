@@ -11,8 +11,8 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ChildService {
-  private endpoint = "https://baghaniassign2v3.azurewebsites.net";
-  private URL = "https://baghaniassign2v3.azurewebsites.net/api/children";
+  private endpoint = "https://baghaniassign2v4.azurewebsites.net";
+  private URL = "https://baghaniassign2v4.azurewebsites.net/api/children";
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
